@@ -1,0 +1,6 @@
+﻿        pays: Sénégal
+        capital: Dakar
+        population: 16743930
+        continent: Africa
+
+        recherche effectue le 09-10-2024
