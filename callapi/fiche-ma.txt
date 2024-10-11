@@ -1,0 +1,12 @@
+﻿    Nom : ibrahima
+    Initiales du pays : ma
+    Type de gouvernement : Royaume
+    Recherche effectuée le : 10-10-2024
+    
+        Pays : Maroc
+        Nom officiel : Royaume du Maroc
+        Capitale : Rabat
+        Population : 36910558
+        Continent : Africa
+        Subregion : Northern Africa
+        Indépendant : Oui

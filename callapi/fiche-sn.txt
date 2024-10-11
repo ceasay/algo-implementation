@@ -1,6 +1,12 @@
-﻿        pays: Sénégal
-        capital: Dakar
-        population: 16743930
-        continent: Africa
-
-        recherche effectue le 09-10-2024
+﻿    Nom : cisse
+    Initiales du pays : sn
+    Type de gouvernement : République
+    Recherche effectuée le : 10-10-2024
+    
+        Pays : Sénégal
+        Nom officiel : République du Sénégal
+        Capitale : Dakar
+        Population : 16743930
+        Continent : Africa
+        Subregion : Western Africa
+        Indépendant : Oui

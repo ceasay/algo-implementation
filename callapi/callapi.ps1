@@ -1,59 +1,46 @@
-# initialesPays = string
-# - endpointApi = "https://restcountries.com/v3.1/alpha?codes="
-# - response  = Json
-# - nomPays  = string
-# - capitalPays  = string
-# - populationPays  = string
-# - continent  = string
-# - contenuHtml = string
 
+#     Collecte des informations du candidat
+$nom = Read-Host "Bonjour, Quel est votre nom ?" 
+Start-Sleep -Milliseconds 1500  # Attends 1500 Millisecondes avant de continuer
 
-#DEBUT
-#     Inviter l'utilisateur à saisir les initiales d'un pays
-#     assigner le contenu dans la variable `initialesPays`
-$initialesPays = Read-Host "Entre les initiales d'un pays"
+$initialesPays = Read-Host "Entre les initiales du pays sur le quel vous voulez des informations"
 
-#     Préparer l'appel à l'API Restcountries
+Write-Host "Chargement des données ..."  -BackgroundColor Green
+
+Start-Sleep -Seconds 3        
+
 $endpointApi = "https://restcountries.com/v3.1/alpha?codes=" + $initialesPays
 
-#     Préparer l'appel à l'API Restcountries
-#         `endpointApi`=`initialesPays`
-
-#     Lancer l'appel à l'API Restcountries
-
-#     Récupérer la réponse de l'appel API dans un variable `response`
 $response = Invoke-RestMethod -Method Get -Uri $endpointApi -ContentType "application/json"
-#     Lancer l'appel à l'API Restcountries
 
-$nomPays  = $response.translations.fra.common ? $response.translations.fra.common : $null
-$capitalPays  = $response.capital ? $response.capital : $null
-$populationPays  = $response.population ? $response.population :$null
-$continent  = $response.region ? $response.region :$null
+$nomPays  = $response.translations.fra.common ? $response.translations.fra.common : $null    
+
+$capitalPays  = $response.capital ? $response.capital : $null 
+
+$continent = $response.region ? $response.region : $null
+
+$populationPays  = $response.population ? $response.population :$null 
+
+$subregion = $response.subregion 
+
+$independent = $response.independent ? $response.independent : $null 
 
 $date = Get-Date -Format  "dd-MM-yyyy"
 
-#     Récupérer la réponse de l'appel API dans un variable `response`
-#     assigner les valeurs à la liste des variable pour l'affichage
-# $nomPays = $response.name
-#     Récupérer la réponse de l'appel API dans un variable `response`
-#     assigner les valeurs à la liste des variable pour l'affichage
-#     Créer le document txt
-#         "fiche-`initialesPays`.txt"
 
-#         Utiliser le cmdlet `Set-Content` pour écrire le contenu dans le fichier
 #         `fiche-`initialesPays`.txt
 $contenu = @"
         pays: $nomPays
         capital: $capitalPays
         population: $populationPays
         continent: $continent
-
+        subregion : $subregion
+        independent: $independent
         recherche effectue le $date
+
 "@
 
-
-Write-Host $contenu -BackgroundColor Blue 
-
+Write-Host $contenu 
 
 $nomFichier = "fiche-" + $initialesPays + ".txt"
 $sortieFichier = Join-Path "C:\Users\ibrah\Documents\algo-implementation\callapi" -ChildPath $nomFichier 
